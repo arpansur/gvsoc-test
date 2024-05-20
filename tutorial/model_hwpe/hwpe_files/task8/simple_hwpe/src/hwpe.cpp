@@ -29,6 +29,8 @@ Hwpe::Hwpe(vp::ComponentConf &config)
   this->new_slave_port("config", &this->cfg_port_); 
   this->new_master_port("irq", &this->irq);
   this->new_master_port("tcdm", &this->tcdm_port );
+  this->cfg_port_.set_req_meth(&Hwpe::hwpe_slave);
+
 
   // contructor of the RegConfigManager class with access to the Hwpe
   this->regconfig_manager_instance = RegConfigManager<Hwpe>(this);
@@ -90,6 +92,8 @@ vp::IoReqStatus Hwpe::hwpe_slave(vp::Block *__this, vp::IoReq *req)
     if(addr == HWPE_REG_STATUS) {
       ///////////////////////// TASK-3 //////////////////////
       // send the job_running_status. Hint use get_job_running_status() from regconfig_manager
+
+      _this->trace.msg("Returning %x\n", *(uint32_t *) data);
       
     }
     else if(addr >= HWPE_REGISTER_OFFS)
