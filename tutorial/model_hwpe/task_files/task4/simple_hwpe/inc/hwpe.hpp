@@ -38,6 +38,7 @@ public:
   vp::IoMaster tcdm_port;
   vp::Trace trace;
   vp::reg_32 state;
+  vp::IoReq io_req;
 
 
   //register configuration instance

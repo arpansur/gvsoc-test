@@ -47,6 +47,9 @@ int run_test() {
     HWPE_WRITE_REG(HWPE_REG_OUTPUT_PTR,    &(output[0]));
     HWPE_WRITE_REG(HWPE_REG_WEIGHT_OFFS,    -128); // setting the woffset to -128
 
+    // start hwpe execution
+    HWPE_WRITE_CMD(HWPE_COMMIT_AND_TRIGGER, HWPE_TRIGGER_CMD);
+
     return 0;
 }
 
