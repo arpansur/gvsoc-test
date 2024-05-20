@@ -35,7 +35,6 @@ copy_file:
 print_subtasks_mk_dir:
 	@echo "SUBTASKS_MK_DIR: $(SUBTASKS_MK_DIR)"
 
-.PHONY: print_subtasks_mk_dir copy_folder copy_file create_target_sol_task1 create_target_sol_task2 create_target_sol_task3 create_target_sol_task4
 
 create_target_sol_task1:
 	$(MAKE) SRC_FPATH=$(SUBTASKS_MK_DIR)../pulp/pulp-open.py DEST_FPATH=$(SUBTASKS_MK_DIR)../pulp/pulp-open-hwpe.py copy_file

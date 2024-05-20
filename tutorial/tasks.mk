@@ -35,7 +35,6 @@ copy_file:
 print_subtasks_mk_dir:
 	@echo "SUBTASKS_MK_DIR: $(SUBTASKS_MK_DIR)"
 
-.PHONY: print_subtasks_mk_dir copy_folder copy_file create_target_sol_task1 create_target_sol_task2 create_target_sol_task3 create_target_sol_task4
 
 integrate_hwpe_task1:
 	$(MAKE) SRC_DIR=$(SUBTASKS_MK_DIR)integrate_hwpe/task_files/ DEST_DIR=$(SUBTASKS_MK_DIR)../pulp/pulp/chips/pulp_open_hwpe copy_folder
