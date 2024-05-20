@@ -25,7 +25,7 @@ int64_t Hwpe::weight_load()
 {
   int64_t max_latency = 0;
   uint8_t data[8];
-  for(int i=0; i<8; i++)
+  for(int i=0; i<2; i++)
   {
     AddressType addr = CLUSTER_MASK & (this->reg_config_.weight_ptr + this->weight.iteration );
     this->io_req.init();

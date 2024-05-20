@@ -44,9 +44,13 @@ enum HwpeState {
     END
 };
 
+enum Mode{
+  Pointwise
+};
+
 struct Iterator{
     int count;
     int iteration;
-}
+};
 
 #endif

@@ -21,7 +21,7 @@
 
 int64_t Hwpe::output_store()
 {
-  int64_t total_latency = 1;
+  int64_t max_latency = 0;
   uint8_t data[4];
   uint32_t output_val = this->output_buffer_.ReadFromIndex(this->output.iteration);
   for(int i=0; i<4; i++){
@@ -36,10 +36,10 @@ int64_t Hwpe::output_store()
   int err = this->tcdm_port.req(&this->io_req);
   if (err == vp::IO_REQ_OK) {
     int64_t latency = this->io_req.get_latency();
-    total_latency = total_latency > latency ? total_latency : latency;
+    max_latency = max_latency > latency ? max_latency : latency;
   } else {
     this->trace.fatal("Unsupported access\n");
   }
   this->output.iteration = this->output.iteration+4;
-  return total_latency;
+  return max_latency+1;
 }

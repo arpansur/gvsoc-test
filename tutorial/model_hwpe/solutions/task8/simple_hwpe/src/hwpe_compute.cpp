@@ -19,7 +19,7 @@
  */
 #include "hwpe.hpp"
 
-int64_t Hwpe::compute()
+int64_t Hwpe::compute_output()
 {
   std::array<std::array<bool, BINCONV_PER_COLUMN>, COLUMN_PER_PE> enable;
   std::array<std::array<WeightType, BINCONV_PER_COLUMN>, COLUMN_PER_PE> weight;
@@ -32,7 +32,8 @@ int64_t Hwpe::compute()
       enable[i].fill(true);
       shift[i] = i;
   }
-  this->pe_instance_.ComputePartialSum(enable, this->input_layout_, this->weight_temp_layout_, shift, sum_array, sum);
+  Mode mode;
+  this->pe_instance_.ComputePartialSum(mode, enable, this->input_layout_, this->weight_temp_layout_, shift, sum_array, sum);
 
   this->output_buffer_.WriteAtIndex(this->compute.iteration, 1, sum);
   this->compute.iteration++;
